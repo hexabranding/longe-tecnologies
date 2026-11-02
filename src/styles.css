@@ -1,0 +1,110 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --breakpoint-xs: 30rem;
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-glow: var(--primary-glow);
+  --color-navy: var(--navy);
+  --color-navy-foreground: var(--navy-foreground);
+  --color-navy-soft: var(--navy-soft);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+}
+
+:root {
+  --radius: 0.875rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.255 0.045 250);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.255 0.045 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.255 0.045 250);
+  /* electric blue #2878F0 */
+  --primary: oklch(0.6 0.19 259);
+  --primary-foreground: oklch(1 0 0);
+  --primary-glow: oklch(0.72 0.15 245);
+  /* navy #10243A */
+  --navy: oklch(0.255 0.045 250);
+  --navy-foreground: oklch(0.97 0.01 250);
+  --navy-soft: oklch(0.33 0.05 250);
+  --secondary: oklch(0.97 0.012 255);
+  --secondary-foreground: oklch(0.255 0.045 250);
+  --muted: oklch(0.97 0.008 255);
+  --muted-foreground: oklch(0.5 0.03 255);
+  --accent: oklch(0.95 0.03 258);
+  --accent-foreground: oklch(0.5 0.19 259);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+  --success: oklch(0.72 0.17 155);
+  --border: oklch(0.92 0.012 255);
+  --input: oklch(0.9 0.015 255);
+  --ring: oklch(0.6 0.19 259);
+
+  --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-glow));
+  --gradient-navy: linear-gradient(160deg, var(--navy) 0%, var(--navy-soft) 100%);
+  --gradient-hero: radial-gradient(ellipse 80% 60% at 70% 20%, color-mix(in oklab, var(--primary) 14%, transparent), transparent 70%), linear-gradient(180deg, var(--secondary), var(--background));
+  --shadow-soft: 0 10px 30px -12px color-mix(in oklab, var(--navy) 18%, transparent);
+  --shadow-elegant: 0 24px 60px -20px color-mix(in oklab, var(--primary) 40%, transparent);
+  --shadow-card-hover: 0 30px 60px -25px color-mix(in oklab, var(--navy) 35%, transparent);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+  section[id] { scroll-margin-top: 80px; }
+}
+
+@utility bg-gradient-primary { background-image: var(--gradient-primary); }
+@utility bg-gradient-navy { background-image: var(--gradient-navy); }
+@utility bg-gradient-hero { background-image: var(--gradient-hero); }
+@utility shadow-soft { box-shadow: var(--shadow-soft); }
+@utility shadow-elegant { box-shadow: var(--shadow-elegant); }
+@utility shadow-card-hover { box-shadow: var(--shadow-card-hover); }
+@utility text-gradient {
+  background-image: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@utility bg-grid {
+  background-image: linear-gradient(color-mix(in oklab, var(--navy-foreground) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--navy-foreground) 6%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
